@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -141,6 +145,16 @@ public class UserController {
         u.setStatus(1);
         u.setAddress(user.getAddress());
         u.setPhone(user.getPhone());
+        
+        if(u.getLasttime()==null) {
+        	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        	String format = sdf.format(new Date());
+            //string转date  不处理时间格式会不理想
+        	ParsePosition pos = new ParsePosition(0);
+            Date strtodate = sdf.parse(format, pos);
+        	u.setLasttime(strtodate);        	 
+        }
+        
         userService.add(u);
 
         userRoleService.setRoles(u,roleIds);

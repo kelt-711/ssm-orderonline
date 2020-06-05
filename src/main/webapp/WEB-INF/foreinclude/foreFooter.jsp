@@ -117,7 +117,7 @@
                     <!--=======  footer copyright text  =======-->
 
                     <div class="footer-copyright-text">
-                        <p>Copyright &copy; 2018 <a href="#">吴锋</a></p>
+                        <p>Copyright &copy; 2020 <a href="#">亚钦</a></p>
                     </div>
 
                     <!--=======  End of footer copyright text  =======-->

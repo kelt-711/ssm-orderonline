@@ -8,7 +8,7 @@
     http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!-- url过滤器 -->
-    <bean id="urlPathMatchingFilter" class="com.byh.biyesheji.filter.URLPathMatchingFilter"/>
+    <bean id="urlPathMatchingFilter" class="com.byh.orderonline.filter.URLPathMatchingFilter"/>
 
     <!-- 配置shiro的过滤器工厂类，id- shiroFilter要和在web.xml中配置的过滤器一致 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -95,7 +95,7 @@
         <property name="sessionManager" ref="sessionManager" />
     </bean>
     <!-- realm -->
-    <bean id="admindatabaseRealm" class="com.byh.biyesheji.realm.AdminDatabaseRealm">
+    <bean id="admindatabaseRealm" class="com.byh.orderonline.realm.AdminDatabaseRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
     </bean>
     <!-- 密码匹配器 -->

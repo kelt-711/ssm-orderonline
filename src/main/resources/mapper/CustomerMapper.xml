@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.byh.biyesheji.dao.CustomerMapper" >
+<mapper namespace="com.byh.orderonline.dao.CustomerMapper" >
 
   <update id="enableStatus">
      update customer set status = 1 where id = #{id}
   </update>
 
-  <resultMap id="BaseResultMap" type="com.byh.biyesheji.pojo.Customer" >
+  <resultMap id="BaseResultMap" type="com.byh.orderonline.pojo.Customer" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -46,7 +46,7 @@
   <sql id="Base_Column_List" >
     id, name, password, address, phone, status
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.byh.biyesheji.pojo.CustomerExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.byh.orderonline.pojo.CustomerExample" >
     select
     <if test="distinct" >
       distinct
@@ -71,13 +71,13 @@
     delete from customer
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.byh.biyesheji.pojo.Customer" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insert" parameterType="com.byh.orderonline.pojo.Customer" useGeneratedKeys="true" keyProperty="id" >
     insert into customer (name, password, address, 
       phone, status)
     values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.byh.biyesheji.pojo.Customer" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insertSelective" parameterType="com.byh.orderonline.pojo.Customer" useGeneratedKeys="true" keyProperty="id" >
     insert into customer
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="name != null" >
@@ -114,7 +114,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.byh.biyesheji.pojo.Customer" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.byh.orderonline.pojo.Customer" >
     update customer
     <set >
       <if test="name != null" >
@@ -135,7 +135,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.byh.biyesheji.pojo.Customer" >
+  <update id="updateByPrimaryKey" parameterType="com.byh.orderonline.pojo.Customer" >
     update customer
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

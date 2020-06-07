@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.byh.biyesheji.dao.ProductMapper" >
+<mapper namespace="com.byh.orderonline.dao.ProductMapper" >
 
-  <select id="randFive" resultType="com.byh.biyesheji.pojo.Product">
+  <select id="randFive" resultType="com.byh.orderonline.pojo.Product">
     SELECT * FROM product ORDER BY rand() LIMIT 5
   </select>
 
@@ -14,11 +14,11 @@
      update product set status = 0 where name = #{name}
   </update>
 
-  <update id="setImageUrl" parameterType="com.byh.biyesheji.pojo.ProductVO">
+  <update id="setImageUrl" parameterType="com.byh.orderonline.pojo.ProductVO">
      update product set imageurl=#{imageUrl} where id = #{id}
   </update>
 
-  <resultMap id="BaseResultMap" type="com.byh.biyesheji.pojo.Product" >
+  <resultMap id="BaseResultMap" type="com.byh.orderonline.pojo.Product" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="REAL" />
@@ -62,7 +62,7 @@
   <sql id="Base_Column_List" >
     id, name, price, zan, number, status, imageurl, miaoshu, cid, bid
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.byh.biyesheji.pojo.ProductExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.byh.orderonline.pojo.ProductExample" >
     select
     <if test="distinct" >
       distinct
@@ -87,7 +87,7 @@
     delete from product
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.byh.biyesheji.pojo.Product" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insert" parameterType="com.byh.orderonline.pojo.Product" useGeneratedKeys="true" keyProperty="id" >
     insert into product (name, price, zan, 
       number, status, imageurl, 
       miaoshu, cid, bid)
@@ -95,7 +95,7 @@
       #{number,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{imageurl,jdbcType=VARCHAR}, 
       #{miaoshu,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER}, #{bid,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.byh.biyesheji.pojo.Product" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insertSelective" parameterType="com.byh.orderonline.pojo.Product" useGeneratedKeys="true" keyProperty="id" >
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="name != null" >
@@ -156,7 +156,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.byh.biyesheji.pojo.Product" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.byh.orderonline.pojo.Product" >
     update product
     <set >
       <if test="name != null" >
@@ -189,7 +189,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.byh.biyesheji.pojo.Product" >
+  <update id="updateByPrimaryKey" parameterType="com.byh.orderonline.pojo.Product" >
     update product
     set name = #{name,jdbcType=VARCHAR},
       price = #{price,jdbcType=REAL},

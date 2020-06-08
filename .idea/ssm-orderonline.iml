@@ -78,5 +78,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:jsp-api:2.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:4.2.2.RELEASE" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" name="jsp-api" level="project" />
   </component>
 </module>

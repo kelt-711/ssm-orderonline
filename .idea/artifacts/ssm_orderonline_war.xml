@@ -9,6 +9,12 @@
     </properties>
     <root id="archive" name="ssm-orderonline.war">
       <element id="artifact" artifact-name="ssm-orderonline:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="servlet-api" />
+          <element id="library" level="project" name="jsp-api" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

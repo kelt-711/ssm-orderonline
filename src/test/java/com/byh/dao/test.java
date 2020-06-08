@@ -20,6 +20,15 @@ public class test {
         Customer customer=customermapper.selectByPrimaryKey(1);
         System.out.println(customer);
         System.out.println(customer);
+           
     }
+    
+    @Test
+    public void testOrder() {
+    	System.out.println("测试一个完整的下订单过程 选择用户:test沈\n");
+    	
+    	
+    }
+    
 
 }

@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-md-6 col-12 mb-20">
                                 <label>pwd</label>
-                                <input class="mb-0" type="text" name="password" id="password" placeholder="">
+                                <input class="mb-0" type="password" name="password" id="password" placeholder="Password">
                             </div>
                             <div class="col-md-12 mb-20">
                                 <label>地址:</label>
@@ -59,7 +59,11 @@
                             </div>
                             <div class="col-md-6 mb-20">
                                 <label>手机:</label>
-                                <input class="mb-0" type="password"  name="phone" id="phone" placeholder="Password">
+                                <input class="mb-0" type="text"  name="phone" id="phone" placeholder="">
+                            </div>
+                             <div class="col-md-6 mb-20">
+                                <label>确认密码:</label>
+                                <input class="mb-0" type="password"  name="sure_password" id="sure_password" placeholder="Password">
                             </div>
 
                             <div class="col-12">
@@ -83,6 +87,10 @@
             if(0==$("#name").val().length||0==$("#password").val().length){
                 alert("账号不能为空");
                 return false;
+            }
+            else if($("#sure_password").val()!=$("#password").val()){
+            	alert("两次密码不一致");
+            	return false;
             }
             return true;
         });

@@ -2,20 +2,19 @@ package com.byh.dao;
 
 
 import com.byh.orderonline.dao.*;
-import com.byh.orderonline.pojo.Customer;
-import com.byh.orderonline.pojo.Order;
-import com.byh.orderonline.pojo.OrderItem;
-import com.byh.orderonline.pojo.Product;
-import com.byh.orderonline.service.OrderItemService;
-import com.byh.orderonline.service.OrderService;
+import com.byh.orderonline.pojo.*;
+import com.byh.orderonline.service.*;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.apache.commons.lang.math.RandomUtils;
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -40,6 +39,13 @@ public class test {
     private OrderService orderservice;
     @Autowired
     private OrderItemService orderItemService;
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private CustomerService customerService;
+    @Autowired
+    private UserService userService;
+
 
     @Test
     public void testCustomer(){
@@ -108,58 +114,106 @@ public class test {
 
 
     /*
+    * 添加产品
     * 产品信息
     *       手抓饼;价格:$7;赞:99;销量:99;status:1;.....
     *
     * */
     @Test
     public  void testadd_porduct(){
+        Product product_test=new Product();
 
+        //product_test.setId(99);
+        product_test.setName("煎饼果子");
+        product_test.setPrice(7.0f);
+        product_test.setZan(99);
+        product_test.setNumber(99);
+        product_test.setMiaoshu("双倍薄脆，双倍快乐");
+        product_test.setImageurl("images/product/41.jpg");
+        product_test.setCid(3);
+        product_test.setBid(34L);
 
+        productService.save(product_test);
     }
 
     /*
+    * 删除产品
     * 把上面产品删除
     * */
     @Test
     public  void testdel_porduct(){
-
+        productService.del(41);
 
     }
 
     /*
+    * 添加顾客
     * 添加顾客:名字：testcustomer；.........
     * */
     @Test
     public void testadd_customer(){
-
-
+        Customer customer_test=new Customer();
+        customer_test.setName("testcustomer");
+        customer_test.setPassword("123456");
+        customer_test.setAddress("翻斗花园25号");
+        customer_test.setPhone("1314520");
+        customer_test.setStatus(1);
+        customerService.save(customer_test);
     }
 
     /*
+    * 删除顾客
     * 把上面的顾客删除
     * */
     @Test
     public void testdel_customer(){
 
+        customerService.del(18);
 
     }
 
     /*
+    * 添加商家
     * 添加商家  名字：testadmin；.........
     * */
     @Test
     public void testadd_admin(){
 
+        String salt = new SecureRandomNumberGenerator().nextBytes().toString();//生成随机数
+        int times = 2;
+        String algorithmName = "md5";
+        String encodedPassword = new SimpleHash(algorithmName,"123456",salt,times).toString();
+
+        User u = new User();
+        u.setName("testadmin");
+        u.setPassword(encodedPassword);
+        u.setSalt(salt);
+        u.setStatus(1);
+        u.setAddress("西安电子科技大学");
+        u.setPhone("12345678");
+
+        if(u.getLasttime()==null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String format = sdf.format(new Date());
+            //string转date  不处理时间格式会不理想
+            ParsePosition pos = new ParsePosition(0);
+            Date strtodate = sdf.parse(format, pos);
+            u.setLasttime(strtodate);
+        }
+
+        userService.add(u);
+
+
 
     }
 
     /*
+     * 删除商家
      * 把上面的商家删除
      * */
     @Test
     public void testdel_admin(){
-
+        userService.delete(44l);
 
     }
 

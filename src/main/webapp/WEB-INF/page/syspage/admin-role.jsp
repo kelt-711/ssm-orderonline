@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../../include/publicMeta.jsp"%>
 <%@include file="../../include/publicHeader.jsp"%>
@@ -34,7 +35,7 @@
                     <tbody>
                     <c:forEach items="${rs}" var="role">
                         <tr class="text-c">
-                            <td><input type="checkbox" value="" name=""></td>
+                            <td><input type="checkbox" value="1" name=""></td>
                             <td>${role.id}</td>
                             <td>${role.name}</td>
                             <td>${role.desc_}</td>
